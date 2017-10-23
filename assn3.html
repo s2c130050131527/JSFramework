@@ -1,0 +1,124 @@
+<html>
+    
+    <head>
+        <title>Cookies</title>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+        <script type="text/javascript">
+            
+            function clicked()
+            {
+                
+             var value1=0;
+             var val=document.getElementsByName("cookie");
+                for(i=0;i<val.length;i++)
+                    {
+                        if(val[i].checked)
+                            {
+                                value1=val[i].value;
+                            }
+                    }
+                switch (value1)
+                    {
+                        case '1':
+                            addcookie();
+                            break;
+                        case '2':
+                            delcookie();
+                            break;
+                        case '3':
+                            getcookie();
+                            break;
+                        case '4':
+                            showcookie();
+                            break;
+                        case '5':
+                            cntcookie();
+                            break;
+                            
+                    }
+            }
+            
+            function addcookie()
+            {
+                var name=document.getElementById("name").value;
+                value=document.getElementById("value").value;
+                d=new Date();
+                d.setTime(d.getTime()+(2*24*3600*1000));
+                document.cookie=name+"="+value+"; expires="+d.toUTCString+"; path=/";
+                
+            }
+            function delcookie()
+            {
+                 var name=document.getElementById("name").value;
+              //  var value="000";
+                d=new Date();
+                //d.setTime(d.getTime());
+                document.cookie= "abc=;expires=Thu, 01 Jan 1970 00:00:00 UTC" ;
+                //expires="+d.toUTCString+"; path=/";
+                
+            }
+            function getcookie()
+            {
+                var name=document.getElementById("name").value;
+                var x=document.cookie.split(";");
+//                alert (x);
+                for(i=0;i<x.length;i++)
+                    {
+                        var n=x[i].split("=");
+                       alert(n[0]);
+                        if(n[0]==name)
+                            {
+                                alert(x[i]);
+                            }
+                    }
+                
+                            
+            }
+            function showcookie()
+            {
+                var x=document.cookie.split(";");
+                
+                alert(x);
+                
+                
+                
+            }
+            function cntcookie()
+            {
+                 var x=document.cookie.split(";");
+                alert (x.length);
+                
+            }
+            
+        
+        </script>
+    </head>
+    
+    <body>
+        <div class="container">
+        <form class="form-inline">
+        <div id ="namebox" class="form-group" >
+            <label for="">Enter Cookie name:</label>
+            <input type="text" id="name" class="form-control"><br>
+        </div>
+            <br>
+        <div id ="valuebox" class="form-group inline" >
+            <label for="">Enter Value:</label>
+            <input type="text" id="value" class="form-control">
+        </div>
+            <br>
+            <div class="form-group" id="radios">
+                <input type="radio" name="cookie" id="c1" class="form-control" value=1>Add Cookie<br>
+                <input type="radio" name="cookie" id="c2" class="form-control" value=2>Delete Cookie<br>
+                <input type="radio" name="cookie" id="c3" class="form-control" value=3>Get Cookie<br>
+                <input type="radio" name="cookie" id="c4" class="form-control" value=4>Show Cookie<br>
+                <input type="radio" name="cookie" id="c5" class="form-control" value=5>Count Cookie<br>
+            </div>
+            <br>
+            <div class="form-group">
+            <input type="button" class="btn btn-info" value="Go" onclick="clicked()">
+            </div>
+        </form>
+        </div>
+    </body>
+</html>
